@@ -18,5 +18,7 @@
 		"project": "tsconfig.json"
 	},
 	"plugins": ["@typescript-eslint"],
-	"rules": {}
+	"rules": {
+		"import/prefer-default-export": 0
+	}
 }

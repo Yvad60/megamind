@@ -15,7 +15,7 @@ type Mutation {
 
 type Query {
   """Returns a list of all users in the database"""
-  AllUsers: [User!]!
+  allUsers: [User!]!
 }
 
 type User {
