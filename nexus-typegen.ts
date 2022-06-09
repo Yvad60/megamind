@@ -54,7 +54,7 @@ export interface NexusGenFieldTypes {
     updateUser: NexusGenRootTypes['User']; // User!
   }
   Query: { // field return type
-    AllUsers: NexusGenRootTypes['User'][]; // [User!]!
+    allUsers: NexusGenRootTypes['User'][]; // [User!]!
   }
   User: { // field return type
     email: string; // String!
@@ -70,7 +70,7 @@ export interface NexusGenFieldTypeNames {
     updateUser: 'User'
   }
   Query: { // field return type name
-    AllUsers: 'User'
+    allUsers: 'User'
   }
   User: { // field return type name
     email: 'String'
