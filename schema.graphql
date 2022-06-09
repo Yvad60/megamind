@@ -2,6 +2,29 @@
 ### Do not make changes to this file directly
 
 
+type Mutation {
+  """Delete an existing user by their ID """
+  deleteUser(id: Int!): Boolean!
+
+  """Create a new user with provided email and password"""
+  registerUser(email: String!, password: String!): User!
+
+  """Update information of the user with provided id"""
+  updateUser(email: String!, id: Int!, password: String!): User!
+}
+
 type Query {
-  ok: Boolean!
+  """Returns a list of all users in the database"""
+  AllUsers: [User!]!
+}
+
+type User {
+  """The unique email of the user"""
+  email: String!
+
+  """The unique ID of the user"""
+  id: Int!
+
+  """The password of the user"""
+  password: String!
 }
