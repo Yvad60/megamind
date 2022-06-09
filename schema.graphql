@@ -2,12 +2,23 @@
 ### Do not make changes to this file directly
 
 
+type AuthPayload {
+  """The unique token required to authorize a user"""
+  token: String!
+
+  """The authorized user"""
+  user: User
+}
+
 type Mutation {
   """Delete an existing user by their ID """
   deleteUser(id: Int!): Boolean!
 
+  """Authenticate a user from provided email and password"""
+  login(email: String!, password: String!): AuthPayload!
+
   """Create a new user with provided email and password"""
-  registerUser(email: String!, password: String!): User!
+  signUp(email: String!, password: String!): AuthPayload!
 
   """Update information of the user with provided id"""
   updateUser(email: String!, id: Int!, password: String!): User!

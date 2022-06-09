@@ -1,19 +1,9 @@
 import { extendType, intArg, nonNull, stringArg } from 'nexus';
-import { createNewUser, deleteUser, updateUser } from './resorver';
+import { deleteUser, updateUser } from './resorver';
 
 export const userMutation = extendType({
 	type: 'Mutation',
 	definition(t) {
-		t.nonNull.field('registerUser', {
-			type: 'User',
-			description: 'Create a new user with provided email and password',
-			args: {
-				email: nonNull(stringArg()),
-				password: nonNull(stringArg()),
-			},
-			resolve: createNewUser,
-		});
-
 		t.nonNull.field('updateUser', {
 			type: 'User',
 			description: 'Update information of the user with provided id',
