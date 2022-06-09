@@ -28,6 +28,10 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  AuthPayload: { // root type
+    token: string; // String!
+    user?: NexusGenRootTypes['User'] | null; // User
+  }
   Mutation: {};
   Query: {};
   User: { // root type
@@ -48,9 +52,14 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  AuthPayload: { // field return type
+    token: string; // String!
+    user: NexusGenRootTypes['User'] | null; // User
+  }
   Mutation: { // field return type
     deleteUser: boolean; // Boolean!
-    registerUser: NexusGenRootTypes['User']; // User!
+    login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
+    signUp: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     updateUser: NexusGenRootTypes['User']; // User!
   }
   Query: { // field return type
@@ -64,9 +73,14 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  AuthPayload: { // field return type name
+    token: 'String'
+    user: 'User'
+  }
   Mutation: { // field return type name
     deleteUser: 'Boolean'
-    registerUser: 'User'
+    login: 'AuthPayload'
+    signUp: 'AuthPayload'
     updateUser: 'User'
   }
   Query: { // field return type name
@@ -84,7 +98,11 @@ export interface NexusGenArgTypes {
     deleteUser: { // args
       id: number; // Int!
     }
-    registerUser: { // args
+    login: { // args
+      email: string; // String!
+      password: string; // String!
+    }
+    signUp: { // args
       email: string; // String!
       password: string; // String!
     }

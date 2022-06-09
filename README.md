@@ -12,28 +12,42 @@ Clone the project repository by running the following command
 git clone https://github.com/Yvad60/megamind.git
 ```
 
-In your code editor install the project dependecies by running the following command
+### In your code editor install the project dependecies by running the following command
+
+Using pnpm
 
 ```js
-//using pnpm
 pnpm install
+```
 
-//using Yarn
-yarn
+Using yarn
 
-//using npm
+```js
+yarn;
+```
+
+using npm
+
+```
 npm install
 ```
 
-Start the development environment by running the following commands
+### Start the development environment by running the following commands
 
-```js
-//using pnpm
+using pnpm
+
+```
 pnpm dev
+```
 
-//using Yarn
+using yarn
+
+```
 yarn dev
+```
 
-//using npm
+using npm
+
+```
 npm run dev
 ```
