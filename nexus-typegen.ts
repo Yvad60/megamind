@@ -32,6 +32,15 @@ export interface NexusGenObjects {
     token: string; // String!
     user?: NexusGenRootTypes['User'] | null; // User
   }
+  Card: { // root type
+    back: string; // String!
+    creator?: NexusGenRootTypes['User'] | null; // User
+    creatorId: number; // Int!
+    front: string; // String!
+    id: number; // Int!
+    isPublic: boolean; // Boolean!
+    topic: string; // String!
+  }
   Mutation: {};
   Query: {};
   User: { // root type
@@ -56,6 +65,15 @@ export interface NexusGenFieldTypes {
     token: string; // String!
     user: NexusGenRootTypes['User'] | null; // User
   }
+  Card: { // field return type
+    back: string; // String!
+    creator: NexusGenRootTypes['User'] | null; // User
+    creatorId: number; // Int!
+    front: string; // String!
+    id: number; // Int!
+    isPublic: boolean; // Boolean!
+    topic: string; // String!
+  }
   Mutation: { // field return type
     deleteUser: boolean; // Boolean!
     login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
@@ -64,6 +82,7 @@ export interface NexusGenFieldTypes {
   }
   Query: { // field return type
     allUsers: NexusGenRootTypes['User'][]; // [User!]!
+    publicCards: NexusGenRootTypes['Card'][]; // [Card!]!
   }
   User: { // field return type
     email: string; // String!
@@ -77,6 +96,15 @@ export interface NexusGenFieldTypeNames {
     token: 'String'
     user: 'User'
   }
+  Card: { // field return type name
+    back: 'String'
+    creator: 'User'
+    creatorId: 'Int'
+    front: 'String'
+    id: 'Int'
+    isPublic: 'Boolean'
+    topic: 'String'
+  }
   Mutation: { // field return type name
     deleteUser: 'Boolean'
     login: 'AuthPayload'
@@ -85,6 +113,7 @@ export interface NexusGenFieldTypeNames {
   }
   Query: { // field return type name
     allUsers: 'User'
+    publicCards: 'Card'
   }
   User: { // field return type name
     email: 'String'

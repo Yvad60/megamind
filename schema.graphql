@@ -10,6 +10,29 @@ type AuthPayload {
   user: User
 }
 
+type Card {
+  """content on the back side of the card"""
+  back: String!
+
+  """the user that created the card"""
+  creator: User
+
+  """the id of the user created the card"""
+  creatorId: Int!
+
+  """content on the front side of the card"""
+  front: String!
+
+  """The unique ID of the card"""
+  id: Int!
+
+  """is the card public or private"""
+  isPublic: Boolean!
+
+  """the topic which the card is about"""
+  topic: String!
+}
+
 type Mutation {
   """Delete an existing user by their ID """
   deleteUser(id: Int!): Boolean!
@@ -27,6 +50,9 @@ type Mutation {
 type Query {
   """Returns a list of all users in the database"""
   allUsers: [User!]!
+
+  """Return an array of all public cards"""
+  publicCards: [Card!]!
 }
 
 type User {

@@ -16,4 +16,17 @@ model User {
   password   String    
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
+  cards      Card[]
+}
+
+model Card {
+  id          Int        @id  @default(autoincrement())
+  topic       String      
+  front       String    
+  back        String
+  isPublic    Boolean
+  creator      User       @relation(fields: [creatorId],references: [id], onDelete: NoAction)
+  creatorId    Int
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
