@@ -16,7 +16,8 @@ export const getUserCards = async (
 	args: any,
 	context: Context
 ) => {
-	const { userId } = args;
+	const { userId } = context;
+	if (!userId) throw new Error('You need to login first');
 	const userOwnCards = await context.prisma.card.findMany({
 		where: { creatorId: userId },
 	});
@@ -28,16 +29,23 @@ export const createNewCard = async (
 	args: any,
 	context: Context
 ) => {
-	const { creatorUserId } = args;
+	const { userId } = context;
+	if (!userId) throw new Error('You need to login first');
 	const { topic, front, back, isPublic } = args;
 	const newCard = await context.prisma.card.create({
-		data: { topic, front, back, isPublic, creatorId: creatorUserId },
+		data: { topic, front, back, isPublic, creatorId: userId },
 	});
 	return newCard;
 };
 
-export const updatecard = async (parent: any, args: any, context: Context) => {
+export const updateCard = async (parent: any, args: any, context: Context) => {
 	const { id, topic, front, back, isPublic } = args;
+	const { userId } = context;
+	if (!userId) throw new Error('You need to login first');
+	const cardToUpdate = await context.prisma.card.findUnique({ where: id });
+	if (!cardToUpdate) throw new Error('Card does not exist');
+	if (cardToUpdate.creatorId !== userId)
+		throw new Error("You don't have permission to do this action");
 	const updatedCard = await context.prisma.card.update({
 		where: { id },
 		data: { topic, front, back, isPublic },
@@ -47,9 +55,15 @@ export const updatecard = async (parent: any, args: any, context: Context) => {
 
 export const deleteCard = async (parent: any, args: any, context: Context) => {
 	const { id } = args;
-	const userDeleted = await context.prisma.card.delete({
+	const { userId } = context;
+	if (!userId) throw new Error('You need to login first');
+	const cardToDelete = await context.prisma.card.findUnique({ where: id });
+	if (!cardToDelete) throw new Error('Card does not exist');
+	if (cardToDelete.creatorId !== userId)
+		throw new Error("You don't have permission to do this action");
+	const cardDeleted = await context.prisma.card.delete({
 		where: { id },
 	});
-	if (userDeleted) return true;
+	if (cardDeleted) return true;
 	return false;
 };

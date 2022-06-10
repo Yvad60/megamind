@@ -34,6 +34,12 @@ type Card {
 }
 
 type Mutation {
+  """Create a new card from provide information"""
+  createNewCard(back: String!, front: String!, isPublic: Boolean!, topic: String!): Card!
+
+  """Delete a card from the database by its Id"""
+  deleteCard(id: Int!): Boolean!
+
   """Delete an existing user by their ID """
   deleteUser(id: Int!): Boolean!
 
@@ -42,6 +48,9 @@ type Mutation {
 
   """Create a new user with provided email and password"""
   signUp(email: String!, password: String!): AuthPayload!
+
+  """Update an already existing card with provided information"""
+  updateCard(back: String!, front: String!, id: Int!, isPublic: String!, topic: String!): Card!
 
   """Update information of the user with provided id"""
   updateUser(email: String!, id: Int!, password: String!): User!
@@ -53,6 +62,9 @@ type Query {
 
   """Return an array of all public cards"""
   publicCards: [Card!]!
+
+  """Return an array of cards created by specific user"""
+  userOwnCards: [Query!]!
 }
 
 type User {

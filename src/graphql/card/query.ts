@@ -1,5 +1,5 @@
 import { extendType } from 'nexus';
-import { getPublicCards } from './resorver';
+import { getPublicCards, getUserCards } from './resorver';
 
 export const cardQuerry = extendType({
 	type: 'Query',
@@ -8,6 +8,12 @@ export const cardQuerry = extendType({
 			type: 'Card',
 			description: 'Return an array of all public cards',
 			resolve: getPublicCards,
+		});
+
+		t.nonNull.list.nonNull.field('userOwnCards', {
+			type: 'Query',
+			description: 'Return an array of cards created by specific user',
+			resolve: getUserCards,
 		});
 	},
 });

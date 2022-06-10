@@ -1,12 +1,28 @@
-name: Deploy app
+name: Deploy
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - name: Install dependencies
+        run: npm install
+      - name: Check build success
+        run: npm run build
   deploy:
     runs-on: ubuntu-latest
-    environment: production
+    environment: development
+    needs: [build]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
