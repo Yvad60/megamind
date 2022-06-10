@@ -4,6 +4,17 @@
 
 MegaMind will help you improve memory retention by using flashcards. With MegaMind you can create your own flashcards about any topic you want to learn or you can access public flashcards created by the community. Get started for free [HERE]()
 
+## Technologies
+
+This project was build using TypeScript and GraphQL technologies
+
+- Typescript
+- Graphql
+- Nexus
+- Prisma
+- Apollo-server
+- SQLite
+
 ## Project installation
 
 Clone the project repository by running the following command
@@ -51,3 +62,5 @@ using npm
 ```
 npm run dev
 ```
+
+## Contribution

@@ -1,12 +1,32 @@
-name: Deploy app
+name: Deploy
 on:
   push:
     branches:
-      - main
+      - develop
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment: production
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - name: Install dependencies
+        run: yarn install
+      - name: Check lint errors
+        run: yarn run lint
+      - name: Check build success
+        run: yarn build
+  deploy:
+    concurrency:
+      group: heroku_deployment
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    environment: development
+    needs: [build]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3

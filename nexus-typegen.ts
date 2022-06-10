@@ -75,14 +75,18 @@ export interface NexusGenFieldTypes {
     topic: string; // String!
   }
   Mutation: { // field return type
+    createNewCard: NexusGenRootTypes['Card']; // Card!
+    deleteCard: boolean; // Boolean!
     deleteUser: boolean; // Boolean!
     login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     signUp: NexusGenRootTypes['AuthPayload']; // AuthPayload!
+    updateCard: NexusGenRootTypes['Card']; // Card!
     updateUser: NexusGenRootTypes['User']; // User!
   }
   Query: { // field return type
     allUsers: NexusGenRootTypes['User'][]; // [User!]!
     publicCards: NexusGenRootTypes['Card'][]; // [Card!]!
+    userOwnCards: NexusGenRootTypes['Query'][]; // [Query!]!
   }
   User: { // field return type
     email: string; // String!
@@ -106,14 +110,18 @@ export interface NexusGenFieldTypeNames {
     topic: 'String'
   }
   Mutation: { // field return type name
+    createNewCard: 'Card'
+    deleteCard: 'Boolean'
     deleteUser: 'Boolean'
     login: 'AuthPayload'
     signUp: 'AuthPayload'
+    updateCard: 'Card'
     updateUser: 'User'
   }
   Query: { // field return type name
     allUsers: 'User'
     publicCards: 'Card'
+    userOwnCards: 'Query'
   }
   User: { // field return type name
     email: 'String'
@@ -124,6 +132,15 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    createNewCard: { // args
+      back: string; // String!
+      front: string; // String!
+      isPublic: boolean; // Boolean!
+      topic: string; // String!
+    }
+    deleteCard: { // args
+      id: number; // Int!
+    }
     deleteUser: { // args
       id: number; // Int!
     }
@@ -134,6 +151,13 @@ export interface NexusGenArgTypes {
     signUp: { // args
       email: string; // String!
       password: string; // String!
+    }
+    updateCard: { // args
+      back: string; // String!
+      front: string; // String!
+      id: number; // Int!
+      isPublic: string; // String!
+      topic: string; // String!
     }
     updateUser: { // args
       email: string; // String!

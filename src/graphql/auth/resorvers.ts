@@ -25,12 +25,12 @@ export const loginUser = async (parent: any, args: any, context: Context) => {
 	const userExist = await context.prisma.user.findUnique({
 		where: { email: args.email },
 	});
-	if (!userExist) throw new Error('User does not exist');
+	if (!userExist) throw new Error('Invalid email or password');
 	const isPasswordValid = await bcrypt.compare(
 		args.password,
 		userExist.password
 	);
-	if (!isPasswordValid) throw new Error('Invalid password');
+	if (!isPasswordValid) throw new Error('Invalid email or password');
 	const token = jwt.sign(
 		{ id: userExist.id },
 		process.env.LOGIN_SECRET || 'alternativeSecret'
