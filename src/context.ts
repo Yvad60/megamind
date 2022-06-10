@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { PrismaClient } from '@prisma/client';
 import { Request } from 'express';
 import { decodeAuthHeader } from './utils/auth';

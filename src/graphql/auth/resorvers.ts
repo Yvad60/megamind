@@ -8,10 +8,10 @@ export const registerNewUser = async (
 	args: any,
 	context: Context
 ) => {
-	const { email, password } = args;
+	const { email, password, names } = args;
 	const hashedPassword = await bcrypt.hash(password, 10);
 	const newUser = await context.prisma.user.create({
-		data: { email, password: hashedPassword },
+		data: { email, password: hashedPassword, names },
 	});
 	const token = jwt.sign(
 		{ id: newUser.id },

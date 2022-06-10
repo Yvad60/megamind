@@ -46,6 +46,7 @@ export interface NexusGenObjects {
   User: { // root type
     email: string; // String!
     id: number; // Int!
+    names: string; // String!
     password: string; // String!
   }
 }
@@ -91,6 +92,7 @@ export interface NexusGenFieldTypes {
   User: { // field return type
     email: string; // String!
     id: number; // Int!
+    names: string; // String!
     password: string; // String!
   }
 }
@@ -126,6 +128,7 @@ export interface NexusGenFieldTypeNames {
   User: { // field return type name
     email: 'String'
     id: 'Int'
+    names: 'String'
     password: 'String'
   }
 }
@@ -150,6 +153,7 @@ export interface NexusGenArgTypes {
     }
     signUp: { // args
       email: string; // String!
+      names: string; // String!
       password: string; // String!
     }
     updateCard: { // args

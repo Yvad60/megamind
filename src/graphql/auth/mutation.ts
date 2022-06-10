@@ -6,10 +6,12 @@ export const authMutation = extendType({
 	definition(t) {
 		t.nonNull.field('signUp', {
 			type: 'AuthPayload',
-			description: 'Create a new user with provided email and password',
+			description:
+				'Create a new user with provided email and password and names',
 			args: {
 				email: nonNull(stringArg()),
 				password: nonNull(stringArg()),
+				names: nonNull(stringArg()),
 			},
 			resolve: registerNewUser,
 		});

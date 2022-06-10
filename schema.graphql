@@ -46,8 +46,8 @@ type Mutation {
   """Authenticate a user from provided email and password"""
   login(email: String!, password: String!): AuthPayload!
 
-  """Create a new user with provided email and password"""
-  signUp(email: String!, password: String!): AuthPayload!
+  """Create a new user with provided email and password and names"""
+  signUp(email: String!, names: String!, password: String!): AuthPayload!
 
   """Update an already existing card with provided information"""
   updateCard(back: String!, front: String!, id: Int!, isPublic: String!, topic: String!): Card!
@@ -73,6 +73,7 @@ type User {
 
   """The unique ID of the user"""
   id: Int!
+  names: String!
 
   """The password of the user"""
   password: String!
