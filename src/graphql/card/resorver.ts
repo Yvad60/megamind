@@ -42,7 +42,7 @@ export const updateCard = async (parent: any, args: any, context: Context) => {
 	const { id, topic, front, back, isPublic } = args;
 	const { userId } = context;
 	if (!userId) throw new Error('You need to login first');
-	const cardToUpdate = await context.prisma.card.findUnique({ where: id });
+	const cardToUpdate = await context.prisma.card.findUnique({ where: { id } });
 	if (!cardToUpdate) throw new Error('Card does not exist');
 	if (cardToUpdate.creatorId !== userId)
 		throw new Error("You don't have permission to do this action");
@@ -57,7 +57,7 @@ export const deleteCard = async (parent: any, args: any, context: Context) => {
 	const { id } = args;
 	const { userId } = context;
 	if (!userId) throw new Error('You need to login first');
-	const cardToDelete = await context.prisma.card.findUnique({ where: id });
+	const cardToDelete = await context.prisma.card.findUnique({ where: { id } });
 	if (!cardToDelete) throw new Error('Card does not exist');
 	if (cardToDelete.creatorId !== userId)
 		throw new Error("You don't have permission to do this action");

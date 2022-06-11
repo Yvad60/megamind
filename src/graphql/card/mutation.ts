@@ -1,4 +1,11 @@
-import { booleanArg, extendType, intArg, nonNull, stringArg } from 'nexus';
+import {
+	booleanArg,
+	extendType,
+	intArg,
+	nonNull,
+	nullable,
+	stringArg,
+} from 'nexus';
 import { createNewCard, deleteCard, updateCard } from './resorver';
 
 export const cardMutation = extendType({
@@ -21,10 +28,10 @@ export const cardMutation = extendType({
 			description: 'Update an already existing card with provided information',
 			args: {
 				id: nonNull(intArg()),
-				topic: nonNull(stringArg()),
-				front: nonNull(stringArg()),
-				back: nonNull(stringArg()),
-				isPublic: nonNull(stringArg()),
+				topic: nullable(stringArg()),
+				front: nullable(stringArg()),
+				back: nullable(stringArg()),
+				isPublic: nullable(stringArg()),
 			},
 			resolve: updateCard,
 		});

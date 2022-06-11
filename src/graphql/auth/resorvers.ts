@@ -14,7 +14,7 @@ export const registerNewUser = async (
 		data: { email, password: hashedPassword, names },
 	});
 	const token = jwt.sign(
-		{ id: newUser.id },
+		{ userId: newUser.id },
 		process.env.LOGIN_SECRET || 'alternativeSecret'
 	);
 	const payload = { token, user: newUser };
@@ -32,7 +32,7 @@ export const loginUser = async (parent: any, args: any, context: Context) => {
 	);
 	if (!isPasswordValid) throw new Error('Invalid email or password');
 	const token = jwt.sign(
-		{ id: userExist.id },
+		{ userId: userExist.id },
 		process.env.LOGIN_SECRET || 'alternativeSecret'
 	);
 	const payload = { token, user: userExist };

@@ -1,4 +1,4 @@
-import { extendType, intArg, nonNull, stringArg } from 'nexus';
+import { extendType, intArg, nonNull, nullable, stringArg } from 'nexus';
 import { deleteUser, updateUser } from './resorver';
 
 export const userMutation = extendType({
@@ -9,8 +9,8 @@ export const userMutation = extendType({
 			description: 'Update information of the user with provided id',
 			args: {
 				id: nonNull(intArg()),
-				email: nonNull(stringArg()),
-				password: nonNull(stringArg()),
+				email: nullable(stringArg()),
+				password: nullable(stringArg()),
 			},
 			resolve: updateUser,
 		});

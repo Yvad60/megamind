@@ -1,21 +1,29 @@
 # MegaMind API
 
-## A flashcard app for memory improvement.
+Welcome to The API of MegaMind: A flashcard app for memory retention.
 
-MegaMind will help you improve memory retention by using flashcards. With MegaMind you can create your own flashcards about any topic you want to learn or you can access public flashcards created by the community. Get started for free [HERE]()
+## Project Description
+
+You know flashcards right...? No...? Well, a flashcard is just a card containing a small amount of information, they usually have information on both sides (the front and the back) where for instance there will be a question on the first side and the answer to the other. Flashcards are mostly used for for learners as an aid to learning and memorization.
+
+Introducing Megamind.
+
+MegaMind is an a software application that help you to learn and improve your memory retention by using flashcards. With MegaMind you can create an account and start creating your own flashcards about any topic you want, and you can choose what to put on each sides of the card. You can access, manage and customize your cars as you want, you can also access public flashcards created by other users or share you own cards with the World. All that and more available instantly and for free. [Get started](http://megamind-flashcards.herokuapp.com/) now!
 
 ## Technologies
 
-This project was build using TypeScript and GraphQL technologies
+MegaMind API was build generally using Typescript and GraphQL
 
-- Typescript
-- Graphql
-- Nexus
-- Prisma
-- Apollo-server
-- SQLite
+- [**Typescript**](https://www.typescriptlang.org/) : used as the main programming language
+- [**Graphql**](https://graphql.org/): used as the way to handle responses to the API
+- [**Nexus**](https://nexusjs.org/): used to create and manage GraphQL schema and types
+- [**Prisma**](https://www.prisma.io/): The ORM used to \*interrect with the database
+- [**Apollo-server**](https://www.apollographql.com/docs/apollo-server/): used as the server server the API
+- [**SQLite**](https://www.sqlite.org/): used as the database to store data across the API
 
 ## Project installation
+
+Follow the following steps To get started with MegaMind project devlopment environment.
 
 Clone the project repository by running the following command
 
@@ -23,44 +31,28 @@ Clone the project repository by running the following command
 git clone https://github.com/Yvad60/megamind.git
 ```
 
-### In your code editor install the project dependecies by running the following command
-
-Using pnpm
+In install project dependecies by running the command corresponding to your package manager
 
 ```js
 pnpm install
-```
 
-Using yarn
+yarn
 
-```js
-yarn;
-```
-
-using npm
-
-```
 npm install
 ```
 
-### Start the development environment by running the following commands
-
-using pnpm
+start the development environment by running the the command corresponding to your package manager
 
 ```
 pnpm dev
-```
 
-using yarn
-
-```
 yarn dev
-```
 
-using npm
-
-```
 npm run dev
 ```
+
+The app will be started and will be accessible on `http://localhost:3000/` you can customise this from `./src/index.ts`
+
+## Documentation
 
 ## Contribution
