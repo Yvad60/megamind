@@ -157,16 +157,16 @@ export interface NexusGenArgTypes {
       password: string; // String!
     }
     updateCard: { // args
-      back: string; // String!
-      front: string; // String!
+      back?: string | null; // String
+      front?: string | null; // String
       id: number; // Int!
-      isPublic: string; // String!
-      topic: string; // String!
+      isPublic?: string | null; // String
+      topic?: string | null; // String
     }
     updateUser: { // args
-      email: string; // String!
+      email?: string | null; // String
       id: number; // Int!
-      password: string; // String!
+      password?: string | null; // String
     }
   }
 }
