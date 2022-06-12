@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
+import { LOGIN_SECRET } from './constants';
 
-const loginSecret = process.env.LOGIN_SECRET || 'alternativeSecret';
-
+const loginSecret = LOGIN_SECRET;
 export interface AuthTokenPayload {
 	userId: number;
 }

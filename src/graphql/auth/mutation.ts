@@ -17,7 +17,7 @@ export const authMutation = extendType({
 		});
 
 		t.nonNull.field('login', {
-			type: 'AuthPayload',
+			type: 'AuthPayload' || 'BadRequest',
 			description: 'Authenticate a user from provided email and password',
 			args: {
 				email: nonNull(stringArg()),

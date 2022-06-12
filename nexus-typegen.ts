@@ -32,6 +32,10 @@ export interface NexusGenObjects {
     token: string; // String!
     user?: NexusGenRootTypes['User'] | null; // User
   }
+  BadRequest: { // root type
+    errorMessage: string; // String!
+    errorType: string; // String!
+  }
   Card: { // root type
     back: string; // String!
     creator?: NexusGenRootTypes['User'] | null; // User
@@ -41,7 +45,19 @@ export interface NexusGenObjects {
     isPublic: boolean; // Boolean!
     topic: string; // String!
   }
+  DataNotFound: { // root type
+    errorMessage: string; // String!
+    errorType: string; // String!
+  }
   Mutation: {};
+  NoAccess: { // root type
+    errorMessage: string; // String!
+    errorType: string; // String!
+  }
+  NotLoggedIn: { // root type
+    errorMessage: string; // String!
+    errorType: string; // String!
+  }
   Query: {};
   User: { // root type
     email: string; // String!
@@ -52,12 +68,13 @@ export interface NexusGenObjects {
 }
 
 export interface NexusGenInterfaces {
+  Error: NexusGenRootTypes['BadRequest'] | NexusGenRootTypes['DataNotFound'] | NexusGenRootTypes['NoAccess'] | NexusGenRootTypes['NotLoggedIn'];
 }
 
 export interface NexusGenUnions {
 }
 
-export type NexusGenRootTypes = NexusGenObjects
+export type NexusGenRootTypes = NexusGenInterfaces & NexusGenObjects
 
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
@@ -65,6 +82,10 @@ export interface NexusGenFieldTypes {
   AuthPayload: { // field return type
     token: string; // String!
     user: NexusGenRootTypes['User'] | null; // User
+  }
+  BadRequest: { // field return type
+    errorMessage: string; // String!
+    errorType: string; // String!
   }
   Card: { // field return type
     back: string; // String!
@@ -75,6 +96,10 @@ export interface NexusGenFieldTypes {
     isPublic: boolean; // Boolean!
     topic: string; // String!
   }
+  DataNotFound: { // field return type
+    errorMessage: string; // String!
+    errorType: string; // String!
+  }
   Mutation: { // field return type
     createNewCard: NexusGenRootTypes['Card']; // Card!
     deleteCard: boolean; // Boolean!
@@ -83,6 +108,14 @@ export interface NexusGenFieldTypes {
     signUp: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     updateCard: NexusGenRootTypes['Card']; // Card!
     updateUser: NexusGenRootTypes['User']; // User!
+  }
+  NoAccess: { // field return type
+    errorMessage: string; // String!
+    errorType: string; // String!
+  }
+  NotLoggedIn: { // field return type
+    errorMessage: string; // String!
+    errorType: string; // String!
   }
   Query: { // field return type
     allUsers: NexusGenRootTypes['User'][]; // [User!]!
@@ -95,12 +128,20 @@ export interface NexusGenFieldTypes {
     names: string; // String!
     password: string; // String!
   }
+  Error: { // field return type
+    errorMessage: string; // String!
+    errorType: string; // String!
+  }
 }
 
 export interface NexusGenFieldTypeNames {
   AuthPayload: { // field return type name
     token: 'String'
     user: 'User'
+  }
+  BadRequest: { // field return type name
+    errorMessage: 'String'
+    errorType: 'String'
   }
   Card: { // field return type name
     back: 'String'
@@ -111,6 +152,10 @@ export interface NexusGenFieldTypeNames {
     isPublic: 'Boolean'
     topic: 'String'
   }
+  DataNotFound: { // field return type name
+    errorMessage: 'String'
+    errorType: 'String'
+  }
   Mutation: { // field return type name
     createNewCard: 'Card'
     deleteCard: 'Boolean'
@@ -119,6 +164,14 @@ export interface NexusGenFieldTypeNames {
     signUp: 'AuthPayload'
     updateCard: 'Card'
     updateUser: 'User'
+  }
+  NoAccess: { // field return type name
+    errorMessage: 'String'
+    errorType: 'String'
+  }
+  NotLoggedIn: { // field return type name
+    errorMessage: 'String'
+    errorType: 'String'
   }
   Query: { // field return type name
     allUsers: 'User'
@@ -130,6 +183,10 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     names: 'String'
     password: 'String'
+  }
+  Error: { // field return type name
+    errorMessage: 'String'
+    errorType: 'String'
   }
 }
 
@@ -172,9 +229,14 @@ export interface NexusGenArgTypes {
 }
 
 export interface NexusGenAbstractTypeMembers {
+  Error: "BadRequest" | "DataNotFound" | "NoAccess" | "NotLoggedIn"
 }
 
 export interface NexusGenTypeInterfaces {
+  BadRequest: "Error"
+  DataNotFound: "Error"
+  NoAccess: "Error"
+  NotLoggedIn: "Error"
 }
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
@@ -183,7 +245,7 @@ export type NexusGenInputNames = never;
 
 export type NexusGenEnumNames = never;
 
-export type NexusGenInterfaceNames = never;
+export type NexusGenInterfaceNames = keyof NexusGenInterfaces;
 
 export type NexusGenScalarNames = keyof NexusGenScalars;
 
@@ -195,9 +257,9 @@ export type NexusGenAbstractsUsingStrategyResolveType = never;
 
 export type NexusGenFeaturesConfig = {
   abstractTypeStrategies: {
-    isTypeOf: false
-    resolveType: true
+    resolveType: false
     __typename: false
+    isTypeOf: false
   }
 }
 

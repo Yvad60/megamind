@@ -10,6 +10,14 @@ type AuthPayload {
   user: User
 }
 
+type BadRequest implements Error {
+  """The message explaining what could have gone wrong"""
+  errorMessage: String!
+
+  """The type of the error that occured"""
+  errorType: String!
+}
+
 type Card {
   """content on the back side of the card"""
   back: String!
@@ -33,6 +41,22 @@ type Card {
   topic: String!
 }
 
+type DataNotFound implements Error {
+  """The message explaining what could have gone wrong"""
+  errorMessage: String!
+
+  """The type of the error that occured"""
+  errorType: String!
+}
+
+interface Error {
+  """The message explaining what could have gone wrong"""
+  errorMessage: String!
+
+  """The type of the error that occured"""
+  errorType: String!
+}
+
 type Mutation {
   """Create a new card from provide information"""
   createNewCard(back: String!, front: String!, isPublic: Boolean!, topic: String!): Card!
@@ -54,6 +78,22 @@ type Mutation {
 
   """Update information of the user with provided id"""
   updateUser(email: String, id: Int!, password: String): User!
+}
+
+type NoAccess implements Error {
+  """The message explaining what could have gone wrong"""
+  errorMessage: String!
+
+  """The type of the error that occured"""
+  errorType: String!
+}
+
+type NotLoggedIn implements Error {
+  """The message explaining what could have gone wrong"""
+  errorMessage: String!
+
+  """The type of the error that occured"""
+  errorType: String!
 }
 
 type Query {
