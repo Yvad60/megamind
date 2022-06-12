@@ -3,6 +3,11 @@ import { join } from 'path';
 import * as types from './graphql/index';
 
 const schema = makeSchema({
+	features: {
+		abstractTypeStrategies: {
+			resolveType: false,
+		},
+	},
 	types,
 	outputs: {
 		schema: join(process.cwd(), 'schema.graphql'),
